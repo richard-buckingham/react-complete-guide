@@ -21,6 +21,11 @@ class App extends Component {
     ]
   };
 
+  switchNameHandler = newName => {
+    console.log("App component's switchNameHandler method was clicked");
+    console.log("newName = ", newName);
+  };
+
   render() {
     // object destructuring
     const { persons } = this.state;
@@ -28,16 +33,19 @@ class App extends Component {
     return (
       <div className="App">
         <h1>app component</h1>
-        <button>Switch Name</button>
-        <Person name={persons[0].name} age={persons[0].age}>
-          Hobbies: Swimming
-        </Person>
-        <Person name={persons[1].name} age={persons[1].age}>
+
+        <button onClick={() => this.switchNameHandler("charlotte")}>
+          Switch Name
+        </button>
+        <Person name={persons[0].name} age={persons[0].age} />
+        <Person
+          name={persons[1].name}
+          age={persons[1].age}
+          click={this.switchNameHandler.bind(this, "name fro person")}
+        >
           Hobbies: Yoga
         </Person>
-        <Person name={persons[2].name} age={persons[2].age}>
-          Hobbies: Running
-        </Person>
+        <Person name={persons[2].name} age={persons[2].age} />
       </div>
     );
   }
