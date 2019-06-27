@@ -26,6 +26,26 @@ class App extends Component {
     console.log("newName = ", newName);
   };
 
+  nameChangedHandler = event => {
+    console.log("App component's nameChangedHandler method was called");
+    this.setState({
+      persons: [
+        {
+          name: "rich",
+          age: 24
+        },
+        {
+          name: event.target.value,
+          age: 29
+        },
+        {
+          name: "elliott",
+          age: 20
+        }
+      ]
+    });
+  };
+
   render() {
     // object destructuring
     const { persons } = this.state;
@@ -41,7 +61,8 @@ class App extends Component {
         <Person
           name={persons[1].name}
           age={persons[1].age}
-          click={this.switchNameHandler.bind(this, "name fro person")}
+          click={this.switchNameHandler.bind(this, "some new name")}
+          changed={this.nameChangedHandler}
         >
           Hobbies: Yoga
         </Person>
