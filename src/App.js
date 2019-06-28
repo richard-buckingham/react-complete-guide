@@ -50,11 +50,22 @@ class App extends Component {
     // object destructuring
     const { persons } = this.state;
 
+    const buttonStyle = {
+      backgroundColor: "white",
+      font: "inherit",
+      border: "1px solid blue",
+      padding: "8px",
+      cursor: "pointer"
+    };
+
     return (
       <div className="App">
         <h1>app component</h1>
 
-        <button onClick={() => this.switchNameHandler("charlotte")}>
+        <button
+          style={buttonStyle}
+          onClick={() => this.switchNameHandler("charlotte")}
+        >
           Switch Name
         </button>
         <Person name={persons[0].name} age={persons[0].age} />
