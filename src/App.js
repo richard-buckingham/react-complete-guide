@@ -22,11 +22,6 @@ class App extends Component {
     showPersons: false
   };
 
-  switchNameHandler = newName => {
-    console.log("App component's switchNameHandler method was clicked");
-    console.log("newName = ", newName);
-  };
-
   nameChangedHandler = event => {
     console.log("App component's nameChangedHandler method was called");
     this.setState({
@@ -47,6 +42,18 @@ class App extends Component {
     });
   };
 
+  deletePersonHandler = personIndex => {
+    console.log("in deletePersonHandler, index = ", personIndex);
+    // create a copy of the array in state before manipulating it by calling slice.
+    //const persons = this.state.persons.slice();
+
+    // or, use the spread operator
+    const persons = [...this.state.persons];
+    // then remove the person from the array
+    persons.splice(personIndex, 1);
+    this.setState({ persons });
+  };
+
   togglePersonHandler = event => {
     console.log("in togglePersonHandler");
     const doesShow = this.state.showPersons;
@@ -62,26 +69,20 @@ class App extends Component {
       cursor: "pointer"
     };
 
+    // conditionally display persons
     let persons = null;
     if (this.state.showPersons) {
       persons = (
         <div>
-          <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-          />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-            click={this.switchNameHandler.bind(this, "some new name")}
-            changed={this.nameChangedHandler}
-          >
-            Hobbies: Yoga
-          </Person>
-          <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age}
-          />
+          {this.state.persons.map((person, index) => {
+            return (
+              <Person
+                click={() => this.deletePersonHandler(index)}
+                name={person.name}
+                age={person.age}
+              />
+            );
+          })}
         </div>
       );
     }
