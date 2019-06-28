@@ -18,7 +18,8 @@ class App extends Component {
         name: "elliott",
         age: 20
       }
-    ]
+    ],
+    showPersons: false
   };
 
   switchNameHandler = newName => {
@@ -46,9 +47,15 @@ class App extends Component {
     });
   };
 
+  togglePersonHandler = event => {
+    console.log("in togglePersonHandler");
+    const doesShow = this.state.showPersons;
+    this.setState({ showPersons: !doesShow });
+  };
+
   render() {
     // object destructuring
-    const { persons } = this.state;
+    const { persons, showPersons } = this.state;
 
     const buttonStyle = {
       backgroundColor: "white",
@@ -62,22 +69,26 @@ class App extends Component {
       <div className="App">
         <h1>app component</h1>
 
-        <button
-          style={buttonStyle}
-          onClick={() => this.switchNameHandler("charlotte")}
-        >
-          Switch Name
+        <button style={buttonStyle} onClick={this.togglePersonHandler}>
+          Toggle Persons
         </button>
-        <Person name={persons[0].name} age={persons[0].age} />
-        <Person
-          name={persons[1].name}
-          age={persons[1].age}
-          click={this.switchNameHandler.bind(this, "some new name")}
-          changed={this.nameChangedHandler}
-        >
-          Hobbies: Yoga
-        </Person>
-        <Person name={persons[2].name} age={persons[2].age} />
+
+        {showPersons ? (
+          <div>
+            <Person name={persons[0].name} age={persons[0].age} />
+            <Person
+              name={persons[1].name}
+              age={persons[1].age}
+              click={this.switchNameHandler.bind(this, "some new name")}
+              changed={this.nameChangedHandler}
+            >
+              Hobbies: Yoga
+            </Person>
+            <Person name={persons[2].name} age={persons[2].age} />
+          </div>
+        ) : null}
+
+        <pre>{JSON.stringify(this.state)}</pre>
       </div>
     );
   }
