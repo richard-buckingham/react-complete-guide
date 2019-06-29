@@ -57,15 +57,6 @@ class App extends Component {
   };
 
   render() {
-    const buttonStyle = {
-      backgroundColor: "green",
-      color: "white",
-      font: "inherit",
-      border: "1px solid blue",
-      padding: "8px",
-      cursor: "pointer"
-    };
-
     // conditionally display persons
     let persons = null;
     if (this.state.showPersons) {
@@ -84,8 +75,6 @@ class App extends Component {
           })}
         </div>
       );
-
-      buttonStyle.backgroundColor = "red";
     }
 
     const classes = [];
@@ -101,9 +90,7 @@ class App extends Component {
         <h1>app component</h1>
         <p className={classes.join(" ")}>This is really working!!!</p>
 
-        <button style={buttonStyle} onClick={this.togglePersonHandler}>
-          Toggle Persons
-        </button>
+        <button onClick={this.togglePersonHandler}>Toggle Persons</button>
         {persons}
 
         <pre>state: {JSON.stringify(this.state)}</pre>
