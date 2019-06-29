@@ -59,6 +59,8 @@ class App extends Component {
   render() {
     // conditionally display persons
     let persons = null;
+    let btnClass = "";
+
     if (this.state.showPersons) {
       persons = (
         <div>
@@ -75,6 +77,9 @@ class App extends Component {
           })}
         </div>
       );
+
+      // make the burron red when people are display, bit random I kmow...
+      btnClass = styles.Red;
     }
 
     const classes = [];
@@ -90,7 +95,9 @@ class App extends Component {
         <h1>app component</h1>
         <p className={classes.join(" ")}>This is really working!!!</p>
 
-        <button onClick={this.togglePersonHandler}>Toggle Persons</button>
+        <button className={btnClass} onClick={this.togglePersonHandler}>
+          Toggle Persons
+        </button>
         {persons}
 
         <pre>state: {JSON.stringify(this.state)}</pre>
