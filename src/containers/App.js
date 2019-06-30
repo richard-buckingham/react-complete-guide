@@ -2,7 +2,7 @@ import React, { Component } from "react";
 //import "./App.css";
 import styles from "./App.module.css"; // Import css modules stylesheet as styles//
 
-import Person from "./Person/Person";
+import Person from "../components/Persons/Person/Person";
 
 class App extends Component {
   state = {
