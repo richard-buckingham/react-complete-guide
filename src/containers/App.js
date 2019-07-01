@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-//import "./App.css";
-import styles from "./App.module.css"; // Import css modules stylesheet as styles//
-
 import Persons from "../components/Persons/Persons";
+
+import styles from "./App.module.css"; // Import css modules stylesheet as styles//
+import Cockpit from "../components/Cockpit/Cockpit";
 
 class App extends Component {
   state = {
@@ -59,7 +59,6 @@ class App extends Component {
   render() {
     // conditionally display persons
     let persons = null;
-    let btnClass = "";
 
     if (this.state.showPersons) {
       persons = (
@@ -72,29 +71,16 @@ class App extends Component {
           <hr />
         </div>
       );
-
-      // make the burron red when people are display, bit random I kmow...
-      btnClass = styles.Red;
-    }
-
-    const classes = [];
-    if (this.state.persons.length <= 2) {
-      classes.push(styles.red);
-    }
-    if (this.state.persons.length <= 1) {
-      classes.push(styles.bold);
     }
 
     return (
       <div className={styles.App}>
-        <h1>app component</h1>
-        <p className={classes.join(" ")}>This is really working!!!</p>
-
-        <button className={btnClass} onClick={this.togglePersonHandler}>
-          Toggle Persons
-        </button>
+        <Cockpit
+          showPersons={this.state.showPersons}
+          persons={this.state.persons}
+          clicked={this.togglePersonHandler}
+        />
         {persons}
-
         <pre>state: {JSON.stringify(this.state)}</pre>
       </div>
     );
