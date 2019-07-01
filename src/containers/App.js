@@ -5,6 +5,11 @@ import styles from "./App.module.css"; // Import css modules stylesheet as style
 import Cockpit from "../components/Cockpit/Cockpit";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log("[App.js] constructor");
+  }
+
   state = {
     persons: [
       {
@@ -17,6 +22,16 @@ class App extends Component {
     ],
     showPersons: false
   };
+
+  static getDerivedStateFromProps(props, state) {
+    console.log("[App.js] getDerivedStateFromProps, props=", props);
+    console.log("[App.js] getDerivedStateFromProps, state=", state);
+    return state;
+  }
+
+  componentDidMount() {
+    console.log("[App.js] componentDidMount");
+  }
 
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
@@ -57,6 +72,8 @@ class App extends Component {
   };
 
   render() {
+    console.log("[App.js] rendering...");
+
     // conditionally display persons
     let persons = null;
 
