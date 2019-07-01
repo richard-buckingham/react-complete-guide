@@ -5,7 +5,7 @@ import styles from "./Person.module.css"; // Import css modules stylesheet as st
 const person = props => {
   return (
     <div className={styles.Person}>
-      <p onClick={props.click}>
+      <p onClick={props.clicked}>
         I'm {props.name} and I am {props.age} years old dude.
       </p>
       <p>{props.children}</p>
