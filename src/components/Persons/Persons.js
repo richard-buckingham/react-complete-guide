@@ -20,6 +20,7 @@ class Persons extends Component {
     return { message: "message from getSnapshotBeforeUpdate" };
   }
 
+  // This is the most commonly used lifecycle hook.
   componentDidUpdate(previousProps, previousState, snapshot) {
     console.log(
       "[Persons.js] componentDidUpdate, previousProps=",
