@@ -19,7 +19,7 @@ const Cockpit = props => {
     // mock an http request here,
     // which we only want to be executed on page load
     setTimeout(() => {
-      alert("fetch data from the cloud when the page is loaded");
+      //  alert("fetch data from the cloud when the page is loaded");
     }, 1000);
   }, []);
 
