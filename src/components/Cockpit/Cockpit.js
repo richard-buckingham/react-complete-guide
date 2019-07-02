@@ -1,18 +1,23 @@
 import React, { useEffect } from "react";
-
 import styles from "./Cockpit.module.css"; // Import css modules stylesheet as styles//
 
 const Cockpit = props => {
   // implement my first react hook
   // this executes for every render cycle of this component
-  /*   useEffect(() => {
+  useEffect(() => {
+    console.log(
+      "[Cockpit.js] useEffect, executes for every render cycle of this component"
+    );
+  });
+
+  useEffect(() => {
     console.log("[Cockpit.js] useEffect, only run when props.persons changes");
     // mock an http request here,
     // which we only want to be executed on page load
     setTimeout(() => {
-      alert("fetch data from the cloud when props.persons ");
+      //alert("fetch data from the cloud when props.persons ");
     }, 1000);
-  }, [props.persons]); */
+  }, [props.persons]);
 
   useEffect(() => {
     console.log("[Cockpit.js] useEffect, only run when page is loaded");
@@ -31,10 +36,10 @@ const Cockpit = props => {
     btnClass = styles.Red;
   }
 
-  if (props.persons.length <= 2) {
+  if (props.personsLength <= 2) {
     classes.push(styles.red);
   }
-  if (props.persons.length <= 1) {
+  if (props.personsLength <= 1) {
     classes.push(styles.bold);
   }
 
@@ -50,4 +55,4 @@ const Cockpit = props => {
   );
 };
 
-export default Cockpit;
+export default React.memo(Cockpit);
