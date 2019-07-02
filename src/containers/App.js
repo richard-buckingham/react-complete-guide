@@ -62,7 +62,6 @@ class App extends Component {
   };
 
   togglePersonHandler = event => {
-    console.log("in togglePersonHandler");
     const doesShow = this.state.showPersons;
     this.setState({ showPersons: !doesShow });
   };

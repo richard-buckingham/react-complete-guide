@@ -3,6 +3,7 @@ import styles from "./Person.module.css"; // Import css modules stylesheet as st
 
 class Person extends Component {
   render() {
+    console.log("[Person.js] rendering, person = ", this.props.person);
     return (
       <div className={styles.Person}>
         <p onClick={this.props.clicked}>
