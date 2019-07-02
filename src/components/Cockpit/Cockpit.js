@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styles from "./Cockpit.module.css"; // Import css modules stylesheet as styles//
 
 const Cockpit = props => {
+  // implement my first react hook
+  // this executes for every render cycle of this component
+  /*   useEffect(() => {
+    console.log("[Cockpit.js] useEffect, only run when props.persons changes");
+    // mock an http request here,
+    // which we only want to be executed on page load
+    setTimeout(() => {
+      alert("fetch data from the cloud when props.persons ");
+    }, 1000);
+  }, [props.persons]); */
+
+  useEffect(() => {
+    console.log("[Cockpit.js] useEffect, only run when page is loaded");
+    // mock an http request here,
+    // which we only want to be executed on page load
+    setTimeout(() => {
+      alert("fetch data from the cloud when the page is loaded");
+    }, 1000);
+  }, []);
+
   const classes = [];
 
   let btnClass = "";
