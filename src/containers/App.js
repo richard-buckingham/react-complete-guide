@@ -23,26 +23,10 @@ class App extends Component {
     showPersons: false
   };
 
-  static getDerivedStateFromProps(props, state) {
-    console.log("[App.js] getDerivedStateFromProps, props=", props);
-    console.log("[App.js] getDerivedStateFromProps, state=", state);
-    return state;
-  }
-
-  componentDidMount() {
-    console.log("[App.js] componentDidMount");
-  }
-
   shouldComponentUpdate(nextProps, nextState) {
     console.log("[App.js] shouldComponentUpdate, nextProps = ", nextProps);
     console.log("[App.js] shouldComponentUpdate, nextState = ", nextState);
     return true;
-  }
-
-  componentDidUpdate() {
-    console.log(
-      "[App.js] componentDidUpdate was fired, internal state has changed..."
-    );
   }
 
   nameChangedHandler = (event, id) => {
